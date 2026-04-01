@@ -1,0 +1,18 @@
+算法手拿把掐，数学不在话下，随便怎么考都行。作品多的不要不要。<br>
+丰富的技能：<br>
+<div class="flow ability">
+    <div>c++</div>
+    <div>C#</div>
+    <div>Java</div>
+    <div>Python</div>
+    <div>JavaScript</div>
+    <div>Arduino</div>
+    <div>Godot</div>
+    <div>Unity</div>
+    <div>Unreal</div>
+    <div>系统API</div>
+    <div>软件逆向</div>
+    <div>Qt</div>
+    <div>Vue.js</div>
+</div><br>
+（编不下去了，知道是鬼话就好）<br>

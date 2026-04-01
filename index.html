@@ -4,35 +4,405 @@
     <meta charset="UTF-8">
     <title>紫色紫菜的网站</title>
     <meta name="author" content="紫色紫菜">
-</head>
-<body>
-<div><b>看什么看，才学了一点点东西，还想要我做成什么样啊！！！</b></div>
-<div></div>
-<div></div>
-<article>
-    <header>
-        <h1><b>学些什么了？</b></h1>
-    </header>
-    <span>span标签</span>
-    <div>div标签</div>
-    <article>
-        <header>article元素(这是header)</header>
-        这是article的内容
-        <footer>
-            这是article的尾元素(footer)
-        </footer>
-    </article>
-    <section>
-        section元素
-    </section>
-    <div>video视频播放(你别管播了什么)</div>
-    <div>差点忘记怎么写了，记个笔记</div>
-    <div>&lt;video src="视频文件" height="视频高度" width="视频宽度" controls="control"&gt;未成功播放提示&lt;videos&gt;</div>
-    <video src="展示视频.mp4" height="300" width="400" controls="controls">
-        肺物浏览器，连播视频都不行，劝你早点换个浏览器
-    </video><br>
-    <a href="downloads.html">跳转至资源分享</a>
-</article>
-</body>
+    <style>
+        .WelcomeImage{
+            width: 100%;
+            height: 100%;
+            display: block;
+            font-size:10%;
+            background-color: rgba(239, 238, 238, 0.94);
+        }
+        nav{
+            top: 0;
+            left:0;
+            z-index: 1000;
+            width: 100%;
+            position: fixed;
+            background-color: white;
+            border-color:white;
+            border-width: 1px;
+            border-style: solid;
+            box-sizing: border-box;
+            border-radius: 0 0 10px 10px;
+            display: flex;
+        }
+        nav label{
+            font-size:20px;
+            text-align: center;
+            flex:1;
+            width:25%;
+            height: 100%;
+            /*font-size: 18px;*/
+            /*font-weight: bold;*/
+            transition-duration: 0.2s;
+            display: block;
+            /*border-style: solid;*/
+            /*border-width: 1px;*/
+            /*border-color:red;*/
+        }
+        nav label:hover {
+            color: #1367ff;
+            font-size:30px;
+            /*color:blue;*/
+            font-weight:bold;
+            transition-duration: 0.2s;
+        }
+        .myself{
+            background-color: rgba(239, 238, 238, 0.94);
+            /*background-color: white;*/
+            /*border-radius: 0 0 12px 12px;*/
+        }
+        article h1{
+            font-size: 60px;
+            text-align: center;
+            color: #415dea;
+        }
+        article p{
+            text-align: center;
+            font-size: 30px;
+        }
+        .selector{
+            display: flex;
+            font-size: 30px;
+            width: 100%;
+            height:7%;
+        }
+        .selector div{
+            width:15%;
+            background-color: white;
+            border-radius: 5px 5px 0 0;
+            transition: 0.3s ease;
+            border-style: solid;
+            border-color: #6bc5e1;
+            border-bottom-width: 2px;
+            /*box-shadow: 0 -5px 5px black;*/
+        }/*#6bc5e1*/
+        .selector div:hover{
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        .introduce{
+            font-size:20px;
+            background-color: #6bc5e1;
+            /*border-radius: 0 15px 15px 15px;*/
+        }
+        .flow{
+            display:flex;
+            flex-wrap: wrap;
+            gap:12px 50px;
+            justify-content: center;
+        }
+        .flow div{
+            margin: 10px auto;
+            width:100px;
+            height:40px;
+            font-size: 19px;
+            border-radius: 20px;
+            /*background-color: #1367ff;*/
+            line-height: 40px;
+            text-align: center;
+        }
+        .ability div{
+            background-color: #1367ff;
+            transition-duration: 0.2s;
+        }
+        .ability div:hover{
+            transform: scale(1.2);
+            box-shadow: 2px 2px 2px black;
+        }
+        .noneUnderline{
+            text-decoration: none;
+        }
+        .works {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
+        .works section {
+            width: 90%;
+            max-width: 1200px;
+            height: auto;
+            min-height: 500px;
+            border-radius: 20px;
+            box-shadow: 2px 2px 2px black;
+            display: flex;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition-duration: 0.2s;
+        }
+        .works section:hover{
+            transform: scale(1.02);
+            box-shadow: 4px 4px 4px black;
+        }
+
+        .works section video {
+            flex: 1;
+            width: 0;
+            object-fit: cover;
+            border-radius: 10px;
+            background-color: #000;
+        }
+        .works section div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: auto;
+        }
+        .works section div a{
+            padding: 12px 24px;
+            background-color: #1367ff;
+            width: 200px;
+            height: auto;
+            border-radius: 30px;
+            text-decoration: none;
+            color: black;
+            display: inline-block;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            transition: 0.2s;
+            align-self: center;
+        }
+        .works section div a:hover {
+            transform: scale(1.05);
+            background-color: #0e4fcc;
+            color: white;
+        }
+        .dimensionalTravelIntroduce{
+            background-image: url("照片1.png");
+        }
+        .worksIntroduce{
+            flex: 1;           /* 文字区域也占一半 */
+            padding: 15px;     /* 内边距 */
+            overflow-y: auto;  /* 文字过多时可滚动 */
+            font-size: 18px;   /* 可选：调整字体 */
+        }
+        small{
+            font-size: 10px;
+        }
+        .flex1{
+            flex:1;
+        }
+        .product{
+            width:100%;
+            height:90vh;
+            background-color: rgba(248, 248, 248, 0.9);
+            position: relative;
+            overflow: hidden;
+        }
+        .product div{
+            display: flex;
+            background-color: #1367ff;
+            border-radius: 15px;
+            font-size: 20px;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            height:60px;
+            transition-duration: 0.2s;
+            position: absolute;
+        }
+        .product div:hover{
+            transform: scale(1.2);
+        }
+        .footer{
+            width:100%;
+            background-color: black;
+            display:flex;
+            color: grey;
+        }
+        .footer1{
+            flex:2;
+        }
+        .footer1 a{
+            color:grey;
+        }
+        .footer1 a:hover{
+            color: #6a6a6a;
+        }
+        .footer2{
+            flex:1;
+        }
+    </style>
+</head>
+<body id="main">
+
+
+<script type="text/javascript" src="./scripts.js"></script>
+<header>
+    <nav id="navigation" style="transition-duration: 0.2s;background-color: rgb(0,0,0,0)">
+        <label onclick="JumpTo('welcomeImage')">首页</label>
+        <label onclick="JumpTo('myself')">自我介绍</label>
+        <label onclick="JumpTo('works')">作品</label>
+        <label onclick="JumpTo('products')">产品</label>
+    </nav>
+    <script type="text/javascript">
+        const navigation=document.getElementById('navigation');
+        window.addEventListener("scroll",function(){
+            const scroll=window.scrollY;
+            if(scroll<=20){
+                navigation.style.backgroundColor="rgb(0,0,0,0)";
+                navigation.style.borderWidth="1px";
+            }else{
+                navigation.style.backgroundColor="white";
+                navigation.style.borderWidth="5px";
+            }
+        });
+    </script>
+</header>
+
+
+<img src="WelcomeImage.png" alt="图片可能加载不出来哦" class="WelcomeImage" id="welcomeImage">
+
+
+<article class="myself" id="myself">
+    <br><br>
+    <header><h1>我自己</h1></header>
+    <p>------------------------------------------------------------------------------------------------</p>
+    <script type="text/javascript">
+        function selectin1_OnClick(){
+            document.getElementById("selecting1").style.backgroundColor = "#1367ff";
+            document.getElementById("selecting2").style.backgroundColor = "rgba(239, 238, 238, 0.94)";
+            let introduce=document.getElementById("introduce");
+            fetch("./鬼话.txt")
+                .then(response => response.text())
+                .then(data => introduce.innerHTML=data)
+                .catch(error => alert("文件加载失败 error="+error));
+        }
+        function selectin2_OnClick(){
+            document.getElementById("selecting1").style.backgroundColor="rgba(239, 238, 238, 0.94)";
+            document.getElementById("selecting2").style.backgroundColor="#1367ff";
+            let introduce=document.getElementById("introduce");
+            fetch("./人话.txt")
+                .then(response => response.text())
+                .then(data => introduce.innerHTML=data)
+                .catch(error => alert("文件加载失败 error="+error));
+        }
+    </script>
+    <div class="selector">
+        <div onclick="selectin1_OnClick()" id="selecting1">见鬼说鬼话</div>
+        <div onclick="selectin2_OnClick()" id="selecting2">见人说人话</div>
+    </div>
+    <div class="introduce" id="introduce">
+        <!--照片1是鬼话-->
+<!--        <img src="照片1.png" alt="error">-->
+    </div>
+    <script type="text/javascript">
+        selectin1_OnClick();
+    </script>
+</article>
+
+
+<article class="works" id="works">
+    <br><br>
+    <header><h1>我的作品</h1></header>
+    <p>------------------------------------------------------------------------------------------------</p>
+
+    <section class="dimensionalTravelIntroduce">
+        <div class="worksIntroduce flex1">
+            空间穿越是紫色紫菜利用Godot开发的一款小游戏
+            <small>
+                详情：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;VERSION:0.0.1<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;GodotVERSION:4.5.0<br>
+            </small>
+            <a href="./dimensional-travel" download onclick="alert('先不急，马上就能玩到了')">下载</a>
+
+        </div>
+        <video controls="controls" src="dimensional-travel.mp4" class="flex1">视频加载失败</video>
+    </section>
+
+<!--    <section class="dimensionalTravelIntroduce">-->
+<!--        <div class="worksIntroduce flex1">-->
+<!--            空间穿越是紫色紫菜利用Godot开发的一款小游戏-->
+<!--            <small>-->
+<!--                详情：<br>-->
+<!--                &nbsp;&nbsp;&nbsp;&nbsp;VERSION:0.0.1<br>-->
+<!--                &nbsp;&nbsp;&nbsp;&nbsp;GodotVERSION:4.6.0<br>-->
+<!--            </small>-->
+<!--            <a href="./dimensional-travel.exe" download>下载</a>-->
+
+<!--        </div>-->
+<!--        <video controls="controls" src="placeholder.mp4" class="flex1">视频加载失败</video>-->
+<!--    </section>-->
+
+<!--    <a>下载更多作品</a>-->
+</article>
+
+
+<article id="products">
+    <br><br>
+    <header><h1>定制我的产品</h1></header>
+    <p>------------------------------------------------------------------------------------------------</p>
+    <div id="product" class="product">
+        <div id="chance" onclick="alert('骗你的，我现在连服务器都还没搭，怎么定制')">修改器</div>
+        <div id="game" onclick="alert('骗你的，我现在连服务器都还没搭，怎么定制')">游戏</div>
+        <div id="model" onclick="alert('骗你的，我现在连服务器都还没搭，怎么定制')">模型</div>
+        <div id="picture" onclick="alert('骗你的，我现在连服务器都还没搭，怎么定制')">图片</div>
+    </div>
+    <script type="text/javascript">
+        class round {
+            constructor(xPercent, yPercent, radius, speed, id) {
+                this.container = document.getElementById("product");
+                this.x = parseFloat(xPercent)/100*window.innerWidth;
+                this.y = parseFloat(yPercent)/100*window.innerHeight;
+                this.radius = radius;
+                this.speed = speed;
+                this.element = document.getElementById(id);
+                this.angle = 0;
+                // this.element.style.position = 'absolute';
+            }
+            turn() {
+                const leftPos = Math.cos(this.angle) * this.radius+this.x;
+                const topPos = Math.sin(this.angle) * this.radius+this.y;
+                this.element.style.left = leftPos + "px";
+                this.element.style.top = topPos + "px";
+                this.angle += this.speed;
+            }
+        }
+        const chance = new round("50%", "40%", 400, 0.05, "chance");
+        const game = new round("50%", "40%", 300, 0.04, "game");
+        const model = new round("50%", "40%", 200, 0.05, "model");
+        const picture = new round("50%", "40%", 100, 0.04, "picture");
+        function start(obj) {
+            obj.turn();
+            requestAnimationFrame(() => start(obj));
+        }
+        // document.getElementById("product").style.position="relative";
+        start(chance);
+        start(game);
+        start(model);
+        start(picture);
+        document.getElementById("product").addEventListener("mouseover",function(){
+            chance.speed=0.01;
+            game.speed=0.02;
+            model.speed=0.02;
+            picture.speed=0.01;
+        });
+        document.getElementById("product").addEventListener("mouseout",function(){
+            chance.speed=0.05;
+            game.speed=0.04;
+            model.speed=0.05;
+            picture.speed=0.04;
+        });
+    </script>
+</article>
+
+
+<footer class="footer">
+    <div class="footer1">
+还不止一个域名哦:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://zisezicai.github.io" class="noneUnderline">zisezicai.github.io</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://zisezicai-github-io.pages.dev" class="noneUnderline">zisezicai-github-io.pages.dev</a><br>
+    </div>
+
+    <div class="footer2">
+        不知道为什么，感觉网页就是很粗糙，你觉得呢？
+    </div>
+</footer>
+
+
+</body>
 </html>
