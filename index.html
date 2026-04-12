@@ -262,23 +262,38 @@
     <header><h1>我自己</h1></header>
     <p>------------------------------------------------------------------------------------------------</p>
     <script type="text/javascript">
-        function selectin1_OnClick(){
+        let textGhost,textHuman;
+        fetch("./鬼话.txt")
+            .then(response => response.text())
+            .then(data => textGhost=data)
+            .catch(error => alert("文件加载失败 error="+error));
+        fetch("./人话.txt")
+            .then(response => response.text())
+            .then(data => textHuman=data)
+            .catch(error => alert("文件加载失败 error="+error));
+        async function selectin1_OnClick(){
             document.getElementById("selecting1").style.backgroundColor = "#1367ff";
             document.getElementById("selecting2").style.backgroundColor = "rgba(239, 238, 238, 0.94)";
             let introduce=document.getElementById("introduce");
-            fetch("./鬼话.txt")
-                .then(response => response.text())
-                .then(data => introduce.innerHTML=data)
-                .catch(error => alert("文件加载失败 error="+error));
+            while(!textGhost){
+                await fetch("./鬼话.txt")
+                    .then(response => response.text())
+                    .then(data => textGhost=data)
+                    .catch(error => introduce.innerHTML="Loading...");
+            }
+            introduce.innerHTML=textGhost;
         }
-        function selectin2_OnClick(){
+        async function selectin2_OnClick(){
             document.getElementById("selecting1").style.backgroundColor="rgba(239, 238, 238, 0.94)";
             document.getElementById("selecting2").style.backgroundColor="#1367ff";
             let introduce=document.getElementById("introduce");
-            fetch("./人话.txt")
-                .then(response => response.text())
-                .then(data => introduce.innerHTML=data)
-                .catch(error => alert("文件加载失败 error="+error));
+            while(!textHuman){
+                await fetch("./人话.txt")
+                    .then(response => response.text())
+                    .then(data => textHuman=data)
+                    .catch(error => introduce.innerHTML="Loading...");
+            }
+            introduce.innerHTML=textHuman;
         }
     </script>
     <div class="selector">
